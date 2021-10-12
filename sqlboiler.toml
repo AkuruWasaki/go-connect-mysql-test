@@ -1,0 +1,10 @@
+[mysql]
+  dbname     = "go_database"
+  host       = "localhost"
+  port       = 3306
+  user       = "go_test"
+  pass       = "password"
+  sslmode    = "false"
+  whitelist = [
+    "users"
+  ]
