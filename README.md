@@ -9,6 +9,14 @@
 
 # これからの課題
 - ORMにGORMではなくSQLBoilerを使いたかった。。
+  - ```sqlboiler mysql``` コマンドでDBからモデルを生成しようとしたが、次のエラーにある通り、 DBとの接続がうまくいかなかった
+  
+  ```
+  unable to get table names: dial tcp 127.0.0.1:3306: connect: connection refusedError: unable to initialize tables: unable to fetch table data: driver (/go/bin/sqlboiler-mysql) exited non-zero: exit status 1
+  ```
+  - 原因については調査中
+  - わかっていること
+    - 同じUSER, PASSWORD, Host, Portの入力情報でGORM使用時とSQLクライアント使用時での接続は確認できた。
 - API化して動かしてみる
 - Azure(クラウド環境)にデプロイしてみる。
 
