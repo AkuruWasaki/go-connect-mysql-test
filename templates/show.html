@@ -5,20 +5,13 @@
   <title>Sample App</title>
 </head>
 <body>
-  <h2>ユーザー追加</h2>
-  <form method="post" action="/new">
-    <p>名前<input type="text" name="name" size="30" placeholder="入力してください" ></p>
-    <p><input type="submit" value="Send"></p>
-  </form>
-
-  <h2>ユーザー一覧</h2>
+  <h2>ユーザー詳細</h2>
   <table>
     <tr>
       <td>名前</td>
     </tr>
-    {{ range .users }}
       <tr>
-        <td>{{ .Name }}</td>
+        <td>{{ .name }}</td>
         <td>
           <form method="post" action="/delete/{{.ID}}">
             <button type="submit">削除</button>
@@ -26,11 +19,10 @@
         </td>
         <td>
           <button>
-            <a href="/show/{{.ID}}">詳細</a>
+            <a href="/">戻る</a>
           </button>
         </td>
       </tr>
-    {{ end }}
   </ul>
   </body>
 </html>

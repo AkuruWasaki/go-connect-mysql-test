@@ -34,6 +34,22 @@ func main() {
 		})
 	})
 
+	router.GET("/show/:id", func(ctx *gin.Context) {
+		db := sqlConnect()
+		n := ctx.Param("id")
+		id, err := strconv.Atoi(n)
+		if err != nil {
+			panic("id is not a number")
+		}
+		var user User
+		db.First(&user, id)
+		defer db.Close()
+
+		ctx.HTML(200, "show.html", gin.H{
+			"name": user.Name,
+		})
+	})
+
 	router.POST("/new", func(ctx *gin.Context) {
 		db := sqlConnect()
 		name := ctx.PostForm("name")
