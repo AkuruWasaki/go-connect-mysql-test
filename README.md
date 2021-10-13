@@ -20,7 +20,7 @@ go mod init go-connect-mysql-test
 go mod tidy
 ```
 
-3. コンテナ作成
+3. コンテナのbuildと実行
 ```
 docker-compose up --build
 ```
