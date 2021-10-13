@@ -46,6 +46,7 @@ func main() {
 		defer db.Close()
 
 		ctx.HTML(200, "show.html", gin.H{
+			"ID":   user.ID,
 			"name": user.Name,
 		})
 	})
@@ -55,6 +56,23 @@ func main() {
 		name := ctx.PostForm("name")
 		fmt.Println("create user " + name)
 		db.Create(&User{Name: name})
+		defer db.Close()
+
+		ctx.Redirect(302, "/")
+	})
+
+	// ユーザー情報更新処理
+	router.POST("/update/:id", func(ctx *gin.Context) {
+		db := sqlConnect()
+		n := ctx.Param("id")
+		name := ctx.PostForm("name")
+		id, err := strconv.Atoi(n)
+		if err != nil {
+			panic("id is not a number")
+		}
+		var user User
+		db.First(&user, id)
+		db.Model(&user).Update("name", name)
 		defer db.Close()
 
 		ctx.Redirect(302, "/")

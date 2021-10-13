@@ -5,18 +5,13 @@
   <title>Sample App</title>
 </head>
 <body>
-  <h2>ユーザー詳細</h2>
+  <h2>ユーザー編集</h2>
   <table>
     <tr>
       <td>名前</td>
     </tr>
     <tr>
       <td>{{ .name }}</td>
-      <td>
-        <form method="post" action="/delete/{{.ID}}">
-          <button type="submit">削除</button>
-        </form>
-      </td>
       <td>
         <button>
           <a href="/">戻る</a>
